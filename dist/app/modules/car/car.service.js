@@ -16,14 +16,7 @@ exports.carServices = void 0;
 /* eslint-disable @typescript-eslint/no-explicit-any */
 const QueryBuilder_1 = __importDefault(require("../../builder/QueryBuilder"));
 const car_model_1 = __importDefault(require("./car.model"));
-// Create Car Service
 const createCarToDB = (car) => __awaiter(void 0, void 0, void 0, function* () {
-    // const path = file?.path;
-    // let imageData;
-    // if (path) {
-    //   imageData = await sendImageToCloudinary(`IMG-${Date.now()}`, path);
-    //   car.image = imageData?.secure_url;
-    // }
     const result = yield car_model_1.default.create(car);
     return result;
 });
@@ -34,8 +27,8 @@ const getAllCarsFromDB = (query) => __awaiter(void 0, void 0, void 0, function* 
         .search(['model', 'brand', 'category'])
         .price()
         .filter()
-        .sort()
-        .paginate();
+        .sort();
+    // .paginate();
     const result = yield carQuery.modelQuery;
     return result;
 });
